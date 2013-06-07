@@ -21,4 +21,16 @@ Supports PUT,POST,DELETE,GET requests.
 <b>error</b>: function(){...} // Callback function to be called when an error
     
 <b>beforeSend</b>: function(){...} // Callback function to call before sending the request
+<h1>Example</h1>
+<code>
+	ajax.send({<br>
+		url: "users.php",
+		data: {firstName:"Max",lastName:"Gudov"},
+		type: "POST",
+		dataType: "json",
+		success: function(result){
+			console.log(result);	
+		}<br>
+	});
+</code>
 

@@ -22,15 +22,15 @@ Supports PUT,POST,DELETE,GET requests.
     
 <b>beforeSend</b>: function(){...} // Callback function to call before sending the request
 <h1>Example</h1>
-<code>
-	ajax.send({<br>
+<pre><code>
+	ajax.send({
 		url: "users.php",
-		data: {firstName:"Max",lastName:"Gudov"},
+		data: {firstName:"Max",lastName:"Golubcov"},
 		type: "POST",
 		dataType: "json",
 		success: function(result){
-			console.log(result);	
-		}<br>
+			console.log(result);
+		}
 	});
-</code>
+</re></code>
 

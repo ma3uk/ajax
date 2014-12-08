@@ -1,4 +1,4 @@
-  var ajax = {
+var ajax = {
         send: function (data) {
 			if (typeof (data) === 'object') {
 				data.async = data.async || true;
@@ -31,14 +31,14 @@
 						}
 					}
 				};
-                var checkType = ajax.findArray(["GET","DELETE","POST","PUT"],data.type);
-                if(checkType !== false) {
+
+                if(type = ~['GET','DELETE','POST','PUT','HEAD'].indexOf(data.type)) {
                     if (data.type === 'GET') {
                         xhr.open('GET',data.url + "?" + ajax.toQueryString(data.data),true);
                         xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
                         xhr.send(null);
                     } else {
-                        xhr.open(checkType,data.url,true);
+                        xhr.open(data.type,data.url,true);
                         xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
                         xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
                         xhr.send(ajax.toQueryString(data.data));
@@ -46,15 +46,6 @@
                 }
 			}
 		},
-
-		findArray: function (array, value) {
-
-            for(var i=0; i<array.length; i++) {
-                if (array[i] == value) return value;
-            }
-
-            return false;
-        },
 
 		parseJSON: function (data) {
 				if (typeof (data) !== "string" || !data || data === '') {
@@ -92,7 +83,7 @@
 					
 				value = data[key];
 				
-					if (ajax.isArray(data)) {
+					if ((typeof (data) === "object") && (data instanceof Array)) {
 						for (i = 0; i < value.length; i++) {
 							push(key, value[i]);
 						}
@@ -102,9 +93,5 @@
 				}
 				
 				return query.replace(/&$/, '').replace(/%20/g, '+');
-			},
-
-		isArray: function (data) {
-			return (typeof (data) === "object") && (data instanceof Array);
 			}
 	};

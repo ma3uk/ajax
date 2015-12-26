@@ -4,6 +4,7 @@ Supports PUT,POST,DELETE,GET,OPTIONS,HEAD requests.
 <b>Normal:</b> 2.26kb
 <b>Minify:</b> 1.24kb
 <b>MonkeyJS:</b> 1.04kb
+<b>Gzip:</b> 0.64kb
 <h1>Use</h1>
 <code>
   ajax.send({...})

@@ -22,7 +22,7 @@ var ajax = {
 							data.success(xhr.responseXML);
 							}
 							if (data.dataType === 'json') {
-							data.success(ajax.parseJSON(xhr.responseText));
+							data.success(window.JSON.parse(xhr.responseText));
 							}
 						}
 					} else {
@@ -46,29 +46,6 @@ var ajax = {
                 }
 			}
 		},
-
-		parseJSON: function (data) {
-				if (typeof (data) !== "string" || !data || data === '') {
-					return null;
-				}
-
-				data = data.replace(/^\s+/, '');
-				data = data.replace(/\s+$/, '');
-				
-				if (window.JSON && window.JSON.parse) {
-					return window.JSON.parse(data);
-				}
-				
-				var checkChars = /^[\],:{}\s]*$/;
-				var checkEscape = /\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g;
-				var checkTokens = /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g;
-				var checkBraces = /(?:^|:|,)(?:\s*\[)+/g;
-				
-				if (checkChars.test(data.replace(checkEscape, "@").replace(checkTokens, "]").replace(checkBraces, ""))) 
-				{
-					return (new Function( "return " + data ))();
-				}
-			},
 			
 		toQueryString: function (data) {
 				var query = '', i,

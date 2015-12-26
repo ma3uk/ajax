@@ -1,9 +1,9 @@
 A simple JavaScript library for sending AJAX requests.
 Supports PUT,POST,DELETE,GET,OPTIONS,HEAD requests.
 <h3>Size:</h3>
-<b>Normal:</b> 3.04kb
-<b>Minify:</b> 1.65kb
-<b>MonkeyJS:</b> 1.21kb
+<b>Normal:</b> 2.26kb
+<b>Minify:</b> 1.24kb
+<b>MonkeyJS:</b> 1.04kb
 <h1>Use</h1>
 <code>
   ajax.send({...})
